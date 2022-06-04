@@ -1,77 +1,137 @@
 import * as React from 'react';
 import { NavLink as RouterLink } from 'react-router-dom';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectDrawerState } from '../store/selectors';
-import { manageDrawer } from '../store/handleDrawer';
+import Logo from "../logo.svg"
 
 const drawerWidth = 240;
 
 
 export default function PersistentDrawerLeft() {
-    const theme = useTheme();
-    const dispatch = useDispatch();
     var drawerOpen = useSelector(selectDrawerState());
 
-  const handleDrawer = () => {
-    dispatch(manageDrawer())
-  };
-
-  return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <Drawer
-        sx={{
-          width: drawerWidth
-          }}
-        variant="persistent"
-        anchor="left"
-        open={drawerOpen}
-      >
-        <div>
-          <IconButton onClick={handleDrawer}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-            <ListItem disablePadding>
-            <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="users">
-              <ListItemButton>
-                <ListItemIcon>
-                  <InboxIcon />
-                </ListItemIcon>
-                <ListItemText primary={'Utilisateurs'} />
-              </ListItemButton>
-              </RouterLink>
-
-            </ListItem>
-            <ListItem disablePadding>
-            <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/">
-              <ListItemButton>
-                <ListItemIcon>
-                    <MailIcon />
-                </ListItemIcon>
-                <ListItemText primary={'Acceuil'} />
-              </ListItemButton>
-              </RouterLink>
-            </ListItem>
-        </List>
-        <Divider />
+    return (
+        <Drawer
+            sx={{ width: (drawerOpen ? drawerWidth : 0) }}
+            variant="persistent"
+            anchor="left"
+            open={drawerOpen}
+        >
+            <div style={{ width: drawerWidth, height: 64 }}>
+                <RouterLink style={{ textDecoration: "none", color: "inherit", width:'100%'}} to="/">
+                    <div>
+                        <img src={Logo} alt="Logo" className='logo-img'/>
+                    </div>
+                </RouterLink>
+            </div>
+            <Divider />
+            <List >
+                {/*<p style={{ textAlign:'center' }}>Suivi</p>*/}
+                <ListItem disablePadding>
+                    <RouterLink style={{ textDecoration: "none", color: "inherit", width:'100%'}} to="users">
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <InboxIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Kanban'} />
+                        </ListItemButton>
+                    </RouterLink>
+                </ListItem>
+                <ListItem disablePadding>
+                <RouterLink style={{ textDecoration: "none", color: "inherit", width:'100%'}} to="users">
+                <ListItemButton>
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={'Etat du stock'} />
+                </ListItemButton>
+                </RouterLink>
+                </ListItem>
+                <Divider />
+                <ListItem disablePadding>
+                    <RouterLink style={{ textDecoration: "none", color: "inherit", width:'100%'}} to="users">
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <InboxIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Affecter Tag'} />
+                        </ListItemButton>
+                    </RouterLink>
+                </ListItem>
+                <Divider />
+                <ListItem disablePadding>
+                    <RouterLink style={{ textDecoration: "none", color: "inherit", width:'100%'}} to="users">
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <InboxIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Articles'} />
+                        </ListItemButton>
+                    </RouterLink>
+                </ListItem>
+                <ListItem disablePadding>
+                <RouterLink style={{ textDecoration: "none", color: "inherit", width:'100%'}} to="users">
+                <ListItemButton>
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={'Lignes CMS'} />
+                </ListItemButton>
+                </RouterLink>
+                </ListItem>
+                <ListItem disablePadding>
+                <RouterLink style={{ textDecoration: "none", color: "inherit", width:'100%'}} to="users">
+                <ListItemButton>
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={'Zones'} />
+                </ListItemButton>
+                </RouterLink>
+                </ListItem>
+                <Divider />
+                <ListItem disablePadding>
+                    <RouterLink style={{ textDecoration: "none", color: "inherit", width:'100%'}} to="users">
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <InboxIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Comptes'} />
+                        </ListItemButton>
+                    </RouterLink>
+                </ListItem>
+                <ListItem disablePadding>
+                <RouterLink style={{ textDecoration: "none", color: "inherit", width:'100%'}} to="users">
+                <ListItemButton>
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={'Activités'} />
+                </ListItemButton>
+                </RouterLink>
+                </ListItem>
+                <Divider />
+                <ListItem disablePadding>
+                    <RouterLink style={{ textDecoration: "none", color: "inherit", width:'100%'}} to="users">
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <InboxIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Configurations'} />
+                        </ListItemButton>
+                    </RouterLink>
+                </ListItem>
+            </List>
+            <Divider />
       </Drawer>
-    </Box>
-  );
+    );
 }

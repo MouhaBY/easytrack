@@ -6,11 +6,13 @@ import Appbar from '../Components/Appbar';
 
 export default function Main() {
     return (
-        <div style={{flex:1, flexDirection:"row"}}>
+        <div className='main-app'>
             <Drawer />
             <div style={{flex:1, flexDirection:"column"}}>
                 <Appbar />
-                <Routes />
+                <div className='main-div'>
+                    <Routes />
+                </div>
             </div>
         </div>
     )

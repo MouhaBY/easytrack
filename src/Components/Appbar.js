@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -11,7 +10,7 @@ import Menu from '@mui/material/Menu';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutAction } from '../store/authentication';
 import { useNavigate } from 'react-router-dom';
-import { selectUserId } from '../store/selectors';
+import { selectContact, selectUserId } from '../store/selectors';
 import { manageDrawer } from '../store/handleDrawer';
 
 
@@ -20,6 +19,7 @@ export default function Appbar() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const userId = useSelector(selectUserId());
+    const contact = useSelector(selectContact())
     const handleMenu = () => {
         setOpen(true)
     };
@@ -44,8 +44,7 @@ export default function Appbar() {
     }
 
     return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="relative">
         <Toolbar>
           <IconButton
             size="large"
@@ -69,6 +68,9 @@ export default function Appbar() {
                 onClick={handleMenu}
                 color="inherit"
               >
+                <Typography variant="h6" component="div" sx={{ marginRight: 1 }}>
+                {contact}
+                </Typography>
                 <AccountCircle />
               </IconButton>
               <Menu
@@ -92,6 +94,5 @@ export default function Appbar() {
             </div>
         </Toolbar>
       </AppBar>
-    </Box>
   );
 }
